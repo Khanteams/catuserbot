@@ -11,7 +11,7 @@ from ..utils import is_admin
 plugin_category = "admin"
 
 
-@catub.cat_cmd(incoming=True, groups_only=True)
+@catub.cat_cmd(incoming=True, groups_only=False)
 async def on_new_message(event):
     name = event.raw_text
     snips = sql.get_chat_blacklist(event.chat_id)
@@ -45,7 +45,7 @@ async def on_new_message(event):
         "usage": "{tr}addblacklist <word(s)>",
         "examples": ["{tr}addblacklist fuck", "{tr}addblacklist fuck\nsex"],
     },
-    groups_only=True,
+    groups_only=False,
     require_admin=True,
 )
 async def _(event):
@@ -76,7 +76,7 @@ async def _(event):
         "usage": "{tr}rmblacklist <word(s)>",
         "examples": ["{tr}rmblacklist fuck", "{tr}rmblacklist fuck\nsex"],
     },
-    groups_only=True,
+    groups_only=False,
     require_admin=True,
 )
 async def _(event):
@@ -102,7 +102,7 @@ async def _(event):
         "description": "Shows you the list of blacklist words in that specific chat",
         "usage": "{tr}listblacklist",
     },
-    groups_only=True,
+    groups_only=False,
     require_admin=True,
 )
 async def _(event):
